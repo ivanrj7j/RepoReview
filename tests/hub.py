@@ -9,7 +9,10 @@ class TestGithubUI(unittest.TestCase):
 
 
     def setUp(self):
-        self.git = GithubUI(Token(env.API_KEY))
+        self.git = GithubUI(env.API_KEY)
+
+    def test_init(self):
+        self.assertIsNotNone(self.git)
 
     def test_getRepo(self):
         repo = self.git.getRepo(self.spoonKnife)

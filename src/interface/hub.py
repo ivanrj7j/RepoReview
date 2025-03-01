@@ -3,8 +3,8 @@ from github.Repository import Repository
 from github.Auth import Token
 
 class GithubUI:
-    def __init__(self, apiKey:Token):
-        self.git = Github(auth=apiKey)
+    def __init__(self, apiKey:str):
+        self.git = Github(auth=Token(apiKey))
 
     def _getRepoStructure(self, repo:Repository, path:str=""):    
         contents = repo.get_contents(path)
