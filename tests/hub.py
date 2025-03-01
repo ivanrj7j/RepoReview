@@ -10,14 +10,17 @@ class TestGithubUI(unittest.TestCase):
     ganContent = {'.gitignore': 'file', 'LICENSE': 'file', 'README.md': 'file', 'config.py': 'file', 'main.py': 'file', 'src': {'__init__.py': 'file', 'blocks.py': 'file', 'discriminator.py': 'file', 'generator.py': 'file', 'loss.py': 'file'}, 'train': {'mseTrain.py': 'file', 'vggTrain.py': 'file'}, 'utils': {'__init__.py': 'file', 'dataloader.py': 'file', 'utils.py': 'file'}}
 
     content = {
-        spoonKnife: spoonKnifeContent,
-        gan: ganContent,
+        spoonKnife: (spoonKnifeContent, "This repo is for demonstration purposes only."),
+        gan: (ganContent, "Implementation of Super resolution models using GANs"),
         # Add more repos here as needed...
     }
 
-
-    def setUp(self):
-        self.git = GithubUI(env.API_KEY)
+    testFiles = [
+        "README.md",
+        "train/vggTrain.py"
+    ]
+    
+    git = GithubUI(env.API_KEY)
 
     def test_init(self):
         self.assertIsNotNone(self.git)
@@ -28,7 +31,7 @@ class TestGithubUI(unittest.TestCase):
         self.assertEqual(repo.name, 'Spoon-Knife')
 
     def test__getRepoStructure(self):
-        for url, content in self.content.items():
+        for url, (content, description) in self.content.items():
             repo = self.git.getRepo(url)
             structure = self.git._getRepoStructure(repo)
             self.assertIsNotNone(structure)
@@ -36,8 +39,23 @@ class TestGithubUI(unittest.TestCase):
             self.assertEqual(structure, content)
 
     def test_getRepoStructure(self):
-        for url, content in self.content.items():
+        for url, (content, description) in self.content.items():
             structure = self.git.getRepoStructure(url)
             self.assertIsNotNone(structure)
             self.assertEqual(type(structure), dict)
             self.assertEqual(structure, content)
+
+    def test_description(self):
+        for url, (content, description) in self.content.items():
+            desc = self.git.getDescription(url)
+            self.assertEqual(desc, description)
+
+    def test_readme(self):
+        for url in self.content.keys():
+            readme = self.git.getReadme(url)
+            self.assertEqual(type(readme), str)
+
+    def test_fileContent(self):
+        for file in self.testFiles:
+            content = self.git.getFileContents("/".join((self.gan, file)))
+            self.assertEqual(type(content), str)
