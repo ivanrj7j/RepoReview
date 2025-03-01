@@ -59,3 +59,7 @@ class TestGithubUI(unittest.TestCase):
         for file in self.testFiles:
             content = self.git.getFileContents(self.gan, file)
             self.assertEqual(type(content), str)
+
+    def test_relevantFiles(self):
+        content = list(self.git.getRelevantFiles(self.gan, self.testFiles))
+        self.assertGreater(len(content), 0)

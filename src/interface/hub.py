@@ -49,3 +49,7 @@ class GithubUI:
             return fileContent
         except UnknownObjectException:
             return ""
+        
+    def getRelevantFiles(self, repo:str, files:list[str]):
+        for file in files:
+            yield self.getFileContents(repo, file)
