@@ -12,7 +12,7 @@ class GithubUI:
         
         for content in contents:
             if content.type == "dir":
-                structure[content.name] = self.get_repo_structure(repo, content.path)  # Recurse into directories
+                structure[content.name] = self._getRepoStructure(repo, content.path)  # Recurse into directories
             else:
                 structure[content.name] = "file"
         
