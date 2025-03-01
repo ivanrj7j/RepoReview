@@ -42,11 +42,7 @@ class GithubUI:
 
         return ""
     
-    def getFileContents(self, filePath:str):
-        paths = filePath.split("/")
-        repo = "/".join(paths[:2])
-        file = "/".join(paths[2:])
-
+    def getFileContents(self, repo:str, file:str):
         try:
             repo = self.getRepo(repo)
             fileContent = repo.get_contents(file).decoded_content.decode("utf-8")

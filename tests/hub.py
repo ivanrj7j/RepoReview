@@ -57,5 +57,5 @@ class TestGithubUI(unittest.TestCase):
 
     def test_fileContent(self):
         for file in self.testFiles:
-            content = self.git.getFileContents("/".join((self.gan, file)))
+            content = self.git.getFileContents(self.gan, file)
             self.assertEqual(type(content), str)
