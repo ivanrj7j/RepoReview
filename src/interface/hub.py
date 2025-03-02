@@ -133,7 +133,7 @@ class GithubUI:
             yield self.getFileContents(repoPath, file)
 
     def getAIInput(self, repoPath:str, files:list[str]):
-        contents = self.getRelevantFiles(repoPath, files)
+        contents = list(self.getRelevantFiles(repoPath, files))
         readme = self.getReadme(repoPath)
         description = self.getDescription(repoPath)
         structure = self.getRepoStructure(repoPath)
