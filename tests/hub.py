@@ -63,3 +63,10 @@ class TestGithubUI(unittest.TestCase):
     def test_relevantFiles(self):
         content = list(self.git.getRelevantFiles(self.gan, self.testFiles))
         self.assertGreater(len(content), 0)
+
+    def test_aiInput(self):
+        inp = self.git.getAIInput(self.gan, self.testFiles)
+        self.assertIsNotNone(inp)
+        self.assertEqual(type(inp), dict)
+        self.assertEqual(list(inp.keys()), ["readme", "description", "contents", "structure"])
+        print(inp)
