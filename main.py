@@ -6,7 +6,7 @@ import os
 from src.ai.filePicker import pickFiles
 from src.interface import GithubUI
 from src.ai.scorer import generateScore
-from src.env import API_KEY, CLARITY_KEY
+from src.env import API_KEY
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,17 +26,6 @@ logging.basicConfig(
 
 # Global GitHub UI object
 git = GithubUI(API_KEY)
-
-js = """
-            <script type="text/javascript">
-        console.log("Running Clarity...");
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", """+f'"{CLARITY_KEY}"'+""");
-</script>
-            """
 
 def evaluateRepo(repoUrl: str):
     """
@@ -114,7 +103,7 @@ def evaluateWithLoading(repoUrl: str):
     yield (finalOutput, f"⏳ Time taken: {elapsedTime}s")
 
 
-with gr.Blocks(title="RepoReview", js=js) as ui:
+with gr.Blocks(title="RepoReview") as ui:
     gr.Markdown("# 🛠️ GitHub Repo Evaluator")
     gr.Markdown(
         "Enter a GitHub repository URL to analyze its structure and quality.")
