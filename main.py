@@ -7,6 +7,9 @@ from src.ai.filePicker import pickFiles
 from src.interface import GithubUI
 from src.ai.scorer import generateScore
 from src.env import API_KEY
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Ensure logs directory exists
 os.makedirs("logs", exist_ok=True)
@@ -122,4 +125,4 @@ with gr.Blocks() as ui:
     
     gr.Markdown('<p style="text-align: center;"><a href="https://github.com/ivanrj7j" target="_blank" style="color: #007bff; text-decoration: none;">Made with 💖 Ivan Raphel Jaison</a></p>')
 
-ui.launch()
+ui.launch(server_name="0.0.0.0", server_port=int(os.getenv("PORT", 8080)))
