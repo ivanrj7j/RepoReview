@@ -69,4 +69,3 @@ class TestGithubUI(unittest.TestCase):
         self.assertIsNotNone(inp)
         self.assertEqual(type(inp), dict)
         self.assertEqual(list(inp.keys()), ["readme", "description", "contents", "structure"])
-        print(inp)
