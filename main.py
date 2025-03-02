@@ -56,7 +56,7 @@ def evaluateRepo(repoUrl: str):
         totalS = score["total"]
         totalScoreText = f"# {"🟢" if totalS >= 70 else "🟡" if totalS >= 40 else "🔴"}**Total Score:** {totalS}\n\n"
         summaryText = f"# **Summary:**\n{score['summary']}\n\n"
-        evaluationText = "**Evaluation Scores:**\n"
+        evaluationText = "# **Evaluation Scores:**\n\n"
 
         for category, details in score['evaluation'].items():
             s = details['score']
