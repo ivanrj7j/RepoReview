@@ -16,18 +16,18 @@ You are an AI designed to evaluate GitHub repositories based on multiple quality
 {
     "summary": "string (short overview of the repository, max 50 words)",
     "evaluation": {
-        "codeReadability": {"score": int, "reason": "string (why this score was given, max 25 words)"},
-        "codeQuality": {"score": int, "reason": "string"},
-        "performance": {"score": int, "reason": "string"},
-        "documentation": {"score": int, "reason": "string"},
-        "testing": {"score": int, "reason": "string"},
-        "collaborationEase": {"score": int, "reason": "string"},
-        "modularity": {"score": int, "reason": "string"},
-        "maintainability": {"score": int, "reason": "string"},
-        "scalability": {"score": int, "reason": "string"},
-        "securityPractices": {"score": int, "reason": "string"},
-        "uxDesign": {"score": int, "reason": "string (only if the repository has UX components)"},
-        "creativity": {"score": int, "reason": "string (rewarding creative approaches or innovative solutions)"}
+        "Code readability": {"score": int, "reason": "string (why this score was given, max 25 words)"},
+        "Code quality": {"score": int, "reason": "string"},
+        "Performance": {"score": int, "reason": "string"},
+        "Documentation": {"score": int, "reason": "string"},
+        "Testing": {"score": int, "reason": "string"},
+        "Ease of collaboration": {"score": int, "reason": "string"},
+        "Modularity": {"score": int, "reason": "string"},
+        "Maintainability": {"score": int, "reason": "string"},
+        "Scalability": {"score": int, "reason": "string"},
+        "Security Practices": {"score": int, "reason": "string"},
+        "UX Design": {"score": int, "reason": "string (only if the repository has UX components)"},
+        "Creativity": {"score": int, "reason": "string (rewarding creative approaches or innovative solutions)"}
     }
 }
 ```
