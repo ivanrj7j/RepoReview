@@ -3,20 +3,23 @@ from google.genai import types
 import json
 
 
-with open("prompts/filePicker.md", "r") as f:
-    filePickerSystemPrompt = f.read()
+with open("prompts/scoring.md", "r") as f:
+    systemPrompt = f.read()
 
-with open("prompts/filePickerOutput.md", "r") as f:
-    filePickerOutputSystemPrompt = f.read()
+with open("prompts/scoringExampleInput.md", "r") as f:
+    exampleInput = f.read()
+
+with open("prompts/scoringExampleOutput.md", "r") as f:
+    exampleOutput = f.read()
 
 
-def pickFiles(fileStructure: dict[str, str]) -> str:
+def generateScore(inp:dict[str, str]):
     contents = [
         types.Content(
             role="user",
             parts=[
                 types.Part.from_text(
-                    text="""{'.gitignore': 'file', 'LICENSE': 'file', 'README.md': 'file', 'config.py': 'file', 'main.py': 'file', 'src': {'init.py': 'file', 'blocks.py': 'file', 'discriminator.py': 'file', 'generator.py': 'file', 'loss.py': 'file'}, 'train': {'mseTrain.py': 'file', 'vggTrain.py': 'file'}, 'utils': {'init.py': 'file', 'dataloader.py': 'file', 'utils.py': 'file'}}"""
+                    text=exampleInput
                 ),
             ],
         ),
@@ -24,7 +27,7 @@ def pickFiles(fileStructure: dict[str, str]) -> str:
             role="model",
             parts=[
                 types.Part.from_text(
-                    text=filePickerOutputSystemPrompt
+                    text=exampleOutput
                 ),
             ],
         ),
@@ -32,7 +35,7 @@ def pickFiles(fileStructure: dict[str, str]) -> str:
             role="user",
             parts=[
                 types.Part.from_text(
-                    text=json.dumps(fileStructure)
+                    text=json.dumps(inp)
                 ),
             ],
         ),
@@ -45,14 +48,23 @@ def pickFiles(fileStructure: dict[str, str]) -> str:
         response_mime_type="application/json",
         system_instruction=[
             types.Part.from_text(
-                text=filePickerSystemPrompt
+                text=systemPrompt
             ),
         ],
     )
 
-    return json.loads(client.models.generate_content(
+    response = json.loads(client.models.generate_content(
         model = model,
         contents=contents,
         config = generate_content_config
     ).text)
-    
+
+    overall = 0
+    for x in response["evaluation"].values():
+        overall += x["score"]
+
+    overall /= len(response["evaluation"])
+
+    response["total"] = round(overall)
+
+    return response
