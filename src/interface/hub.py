@@ -117,17 +117,30 @@ class GithubUI:
         except UnknownObjectException:
             return ""
         
-    def getRelevantFiles(self, repo:str, files:list[str]):
+    def getRelevantFiles(self, repoPath:str, files:list[str]):
         """
         Get the content of relevant files in a GitHub repository.
         Get the GitHub repository and check if the files exist. If not, return an empty string.
         
         Parameters:
-        repo (str): The path to the GitHub repository.
+        repoPath (str): The path to the GitHub repository.
         files (list[str]): The list of file names.
         
         Returns:
         dict: The content of the relevant files.
         """
         for file in files:
-            yield self.getFileContents(repo, file)
+            yield self.getFileContents(repoPath, file)
+
+    def getAIInput(self, repoPath:str, files:list[str]):
+        contents = self.getRelevantFiles(repoPath, files)
+        readme = self.getReadme(repoPath)
+        description = self.getDescription(repoPath)
+        structure = self.getRepoStructure(repoPath)
+
+        return {
+            "readme": readme,
+            "description": description,
+            "contents": contents,
+            "structure":structure
+        }
