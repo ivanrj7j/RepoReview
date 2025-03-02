@@ -83,8 +83,8 @@ RepoReview is an AI agent that goes through a **GitHub repository** and assesses
 ## 🚀 To-Do List
 
 - 🔗 **GitHub Interface** – Fetch repositories, extract metadata, and analyze commit history. ✅
-- 🧠 **AI Review** – Implement NLP and ML models to evaluate repositories.
-- 🎨 **Frontend in Gradio** – Create a user-friendly interface for recruiters to view AI-generated reports.
+- 🧠 **AI Review** – Implement NLP and ML models to evaluate repositories. ✅
+- 🎨 **Frontend in Gradio** – Create a user-friendly interface for recruiters to view AI-generated reports. ✅
 
 ## 🔥 Join the Project!
 
