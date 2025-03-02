@@ -1,92 +1,68 @@
-# RepoReview 🤖📊
+# RepoReview 🤖📊  
 
-Welcome to **RepoReview**, an AI-powered tool designed to analyze GitHub repositories and generate insightful reviews for company recruiters. This project helps recruiters **understand a developer's coding skills** by evaluating repositories based on various software quality parameters.
+🔗 **Live Demo:** [RepoReview on Render](https://reporeview.onrender.com)  
 
-## 📌 Project Overview
+Welcome to **RepoReview**, an AI-powered tool designed to analyze GitHub repositories and generate insightful reviews for recruiters and developers. This tool helps assess **coding quality, documentation, and best practices** in open-source projects.  
 
-RepoReview is an AI agent that goes through a **GitHub repository** and assesses it based on:
-- ✅ **Tests** – Presence and quality of unit/integration tests.
-- 🏗️ **Code Quality** – Clean, maintainable, and efficient code.
-- ⚡ **Optimization** – Performance improvements and best practices.
-- 📖 **Readability** – Proper naming, comments, and structure.
-- 📚 **Documentation** – Well-maintained README, docstrings, and guides.
-- 👥 **Team Workability** – Collaboration metrics, PR reviews, and commit history.
+![Demo](docs/image.png)  
 
-## 🏗️ Workspace Structure
+## 📌 Project Overview  
 
-📂 **.github/** - GitHub workflow and automation files.  
-📂 **docs/** - Documentation and project references.  
+RepoReview evaluates a GitHub repository based on multiple factors, including:  
+
+- ✅ **Testing** – Checks for unit and integration tests.  
+- 🏗️ **Code Quality** – Analyzes structure, maintainability, and efficiency.  
+- ⚡ **Optimization** – Identifies performance bottlenecks.  
+- 📖 **Readability** – Reviews naming conventions, comments, and clarity.  
+- 📚 **Documentation** – Evaluates README, docstrings, and guides.  
+- 👥 **Collaboration Metrics** – Assesses commit history, PRs, and teamwork.  
+
+## 🚀 Features  
+
+- **🔎 AI-Powered Analysis:** Uses NLP and ML to generate detailed repo reviews.  
+- **📊 Interactive Reports:** Provides structured insights on coding practices.  
+- **🎨 User-Friendly UI:** Built with Gradio for seamless user interaction.  
+- **📡 Hosted Online:** Accessible via a simple web interface.  
+
+## 🏗️ Project Structure  
+
+📂 **.github/** - CI/CD workflows for automation.  
+📂 **docs/** - Documentation and references.  
 📂 **src/** - Source code for AI review components.  
-📂 **tests/** - Unit tests for ensuring AI functionality. 
-📄 **.gitignore** - Files to be ignored by Git.  
-📜 **LICENSE** - Project licensing information.  
-📘 **README.md** - This documentation file.  
-📋 **requirements.txt** - Dependencies required for the project.  
-🐍 **test.py** - Initial test script for AI review module.  
+📂 **tests/** - Unit tests ensuring AI model accuracy.  
+📄 **.gitignore** - Files excluded from version control.  
+📜 **LICENSE** - Open-source licensing details.  
+📘 **README.md** - Project documentation.  
+📋 **requirements.txt** - List of dependencies.  
+🐍 **test.py** - Test script for AI evaluation.  
 
-## 🛠️ Getting Started
+## 🛠️ Getting Started  
 
-1. Clone the repository:
+1. **Clone the repository:**  
    ```bash
    git clone https://github.com/ivanrj7j/RepoReview.git
-   ```
-2. Navigate to the project directory:
-   ```bash
    cd RepoReview
-   ```
-3. Set up a virtual environment (optional but recommended):
+   ```  
+2. **(Optional) Create a virtual environment:**  
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
-4. Install dependencies:
+   python -m venv venv  
+   source venv/bin/activate  # Windows: `venv\Scripts\activate`
+   ```  
+3. **Install dependencies:**  
    ```bash
-   pip install -r requirements.txt
-   ```
-5. Run initial tests:
+   pip install -r requirements.txt  
+   ```  
+4. **Run the application locally:**  
    ```bash
-   python test.py
-   ```
+   python main.py  
+   ```  
 
-## 📢 Contribution Guidelines
+## ✅ Project Status: Completed  
 
-### 🔧 How to Contribute
+RepoReview is now **fully functional and live**. Future enhancements may include:  
 
-1. **Create a new branch** for your feature/fix:
-   ```bash
-   git checkout -b feature-branch-name
-   ```
-2. **Make your changes** and ensure they follow best practices.
-3. **Stage and commit your changes:**
-   ```bash
-   git add .
-   git commit -m "Describe your changes"
-   ```
-4. **Push your changes** to the repository:
-   ```bash
-   git push origin feature-branch-name
-   ```
-5. **Create a pull request (PR):**
-   - Navigate to the repository on GitHub.
-   - Click on "Pull Requests" → "New Pull Request".
-   - Select your branch and compare it with the main branch.
-   - Submit the pull request for review.
+- 🤖 **Improved AI Model:** Enhancing accuracy and scoring algorithms.  
+- 🌐 **Multi-Language Support:** Extending analysis to non-Python repositories.  
+- 📢 **User Feedback Integration:** Allowing recruiters to provide input on AI-generated reports.  
 
-### ✅ Best Practices
-
-- Follow **PEP 8** coding guidelines.
-- Write **clear and concise commit messages**.
-- Keep PRs **small and focused**.
-- **Document your code** for better maintainability.
-- **Test your changes** before pushing.
-
-## 🚀 To-Do List
-
-- 🔗 **GitHub Interface** – Fetch repositories, extract metadata, and analyze commit history. ✅
-- 🧠 **AI Review** – Implement NLP and ML models to evaluate repositories. ✅
-- 🎨 **Frontend in Gradio** – Create a user-friendly interface for recruiters to view AI-generated reports. ✅
-
-## 🔥 Join the Project!
-
-This project aims to help recruiters make **data-driven hiring decisions** based on **real coding practices**. Whether you're a developer, AI enthusiast, or UX designer, your contributions are welcome! 😃
-
+🚀 **Check it out live:** [RepoReview on Render](https://reporeview.onrender.com)
